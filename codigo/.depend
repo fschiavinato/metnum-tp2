@@ -1,0 +1,1 @@
+autovalores.o: autovalores.cpp macros.h autovalores.h
