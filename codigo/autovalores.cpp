@@ -28,7 +28,7 @@ void multiplicar(vector<vector<double>>& A, vector<vector<double>>& B, vector<ve
     }
 }
 
-void multiplicar(vector<vector<double>>& A, vector<double>& x, vector<double>& b) {
+void multiplicar(vector<vector<double> >& A, vector<double>& x, vector<double>& b) {
     for(int i = 0; i < A.size(); i++) {
         for(int k = 0; k < x.size(); k++) {
             b[i] += A[i][k] * x[k];
@@ -36,7 +36,7 @@ void multiplicar(vector<vector<double>>& A, vector<double>& x, vector<double>& b
     }
 }
 
-double bilineal(vector<double>& x, vector<vector<double>>& A, vector<double>& y) {
+double bilineal(vector<double>& x, vector<vector<double> >& A, vector<double>& y) {
     vector<double> Ay(y.size());
     multiplicar(A, y, Ay);
     return pi(y, Ay);
@@ -64,7 +64,7 @@ int main() {
     vector<double> x0 = {0, 1};
     vector<double> v(2);
     double lambda;
-    vector<vector<double>> A(2);
+    vector<vector<double> > A(2);
     A[0].resize(2); 
     A[1].resize(2); 
     A[0][0] = 1;
