@@ -32,9 +32,9 @@ int main()
   int k = 3;
   int alpha = 10;
   int opcion = 0; //0-knn , 1-pca+knn
-  int training_cant = 34000; //tomo las cota primeras muestras
+  int training_cant = 1500; //tomo las cota primeras muestras
   int count = 0;
-  int testing_cant = 4000;
+  int testing_cant = 200;
   //int ceros_cant = 0;
 
   string line;
