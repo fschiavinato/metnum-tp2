@@ -7,12 +7,12 @@ LDLIBS=-g
 
 SRCS=autovalores.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
-tp2=tp2.cpp
+tp2=tp2.cpp knn.cpp
 knn=knn.cpp
 
 all: $(OBJS)
-	$(CXX) $(LDFLAGS) -o autovalores $(OBJS) $(LDLIBS)
-
+    #$(CXX) $(LDFLAGS) -o autovalores $(OBJS) $(LDLIBS)
+	#$(CXX) $(LDFLAGS) -o reader $(reader) $(LDLIBS) 
 tp2:
 	$(CXX) $(LDFLAGS) -o tp2 $(tp2) $(LDLIBS)
 
@@ -30,8 +30,9 @@ depend: .depend
 
 clean:
 	$(RM) $(OBJS)
-	$(RM) *o tp2
+	$(RM) *o autovalores
 	$(RM) *o knn
+	$(RM) *o tp2
 
 distclean: clean
 	$(RM) *~ .depend
