@@ -7,6 +7,10 @@ Matriz::Matriz()
     columnas = 0;
 }
 
+Matriz::Matriz(Matriz& copia) : vals(copia.vals), cols(copia.cols), filas_ptr(copia.filas_ptr) {
+    
+}
+
 Matriz::Matriz(long filas, long columnas)
 {
     this->construct(filas, columnas);

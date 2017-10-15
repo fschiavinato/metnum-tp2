@@ -20,6 +20,8 @@ public:
 
     Matriz(long, long);
 
+    Matriz(Matriz& copia);
+
     ~Matriz();
 
     long Filas();
@@ -58,7 +60,7 @@ public:
 
     friend void prlong(const Matriz & matrix, ostream & os);
 		
-	Matriz transpose();
+    Matriz transpose();
 
     vector<double> transmultiply(const vector<double> & x) const;
 
