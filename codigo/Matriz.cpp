@@ -21,12 +21,12 @@ Matriz::~Matriz()
    
 }
 
-long Matriz::Filas()
+long Matriz::Filas() const
 {
     return filas;
 }
 
-long Matriz::Columnas()
+long Matriz::Columnas() const
 {
     return columnas;
 }

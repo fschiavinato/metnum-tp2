@@ -1,3 +1,5 @@
+#ifndef __MATRIZ_H_
+#define __MATRIZ_H_
 #include <iostream>
 #include <iomanip>
 #include <iostream>
@@ -24,9 +26,9 @@ public:
 
     ~Matriz();
 
-    long Filas();
+    long Filas() const;
 
-    long Columnas();
+    long Columnas() const;
 
     Matriz & Set(double val, long fila, long col); 
 

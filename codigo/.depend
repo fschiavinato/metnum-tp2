@@ -1,1 +1,1 @@
-autovalores.o: autovalores.cpp macros.h autovalores.h
+autovalores.o: autovalores.cpp macros.h Matriz.h autovalores.h
