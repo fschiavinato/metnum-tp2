@@ -1,7 +1,11 @@
 #include "Matriz.h"
 #include <vector>
-#define alpha 10
+#include "autovalores.h"
+#include "macros.h"
+#define ALPHA 2
 using namespace std;
+
+void reducir(Matriz& A, int alpha, Matriz& tc);
 
 void pca(vector<Matriz> imgs) {
     const int m = imgs[0].Filas();
@@ -14,24 +18,26 @@ void pca(vector<Matriz> imgs) {
 
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
-            X[i][j] = (imgs[i].get(j, 1) - mu.get(j, 1)) / sqrt(n - 1);
+            X.Set((imgs[i].Get(j, 1) - mu.Get(j, 1)) / sqrt(n - 1), i, j);
         }
     }
-    Matriz tc(alpha, m);
-    reducir(X, alpha, tc);
+    Matriz tc(ALPHA, m);
+    reducir(X, ALPHA,  tc);
 
 }
 
 void reducir(Matriz& A, int alpha, Matriz& tc) {
     for(int i = 0; i < alpha; i++) {
         double autovalor;
-        Matriz& autovector(A.Columnas(), 1);
-        Matriz& x0(A.Columnas(), 1);
+        Matriz autovector(A.Columnas(), 1);
+        Matriz x0(A.Columnas(), 1);
         x0.Set(1, 0, 0);
         MetodoPotencia(A, x0, NITER, autovector, autovalor);
         for(int j = 0; j < autovector.Filas(); j++) {
             tc.Set(autovector.Get(j, 0), i, j);
         }
-        A.sub(autovalor * autovector * autovector.transpuesta());
+        Matriz &vTv = autovector * autovector.transpose();
+        vTv.escalar(autovalor);
+        A.sub(vTv);
     }
 }

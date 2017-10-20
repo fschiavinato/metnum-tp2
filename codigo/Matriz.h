@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <iostream>
 #include <fstream>
+#include <vector>
 //#include <math.h>
 #include <cmath>
 #include <assert.h>
@@ -20,7 +21,7 @@ public:
 
     Matriz();
 
-    Matriz(long, long);
+    Matriz(long int filas, long int columnas);
 
     Matriz(Matriz& copia);
 
@@ -38,23 +39,23 @@ public:
 
     vector<double> multiply(const vector<double> & x) const;
 
-    Matriz multiply(const Matriz & m) const;
+    Matriz& multiply(const Matriz & m) const;
 
     void escalar(double k);
 
-    Matriz add(const Matriz & m) const;
+    Matriz& add(const Matriz & m) const;
 
-    Matriz sub(const Matriz & m) const;
+    Matriz& sub(const Matriz & m) const;
 
     friend bool operator == (const Matriz & a, const Matriz & b);
 
     friend bool operator != (const Matriz & a, const Matriz & b);
 
-    friend Matriz operator + (const Matriz & a, const Matriz & b);
+    friend Matriz& operator + (const Matriz & a, const Matriz & b);
 
-    friend Matriz operator - (const Matriz & a, const Matriz & b);
+    friend Matriz& operator - (const Matriz & a, const Matriz & b);
 
-    friend Matriz operator * (const Matriz & a, const Matriz & b);
+    friend Matriz& operator * (const Matriz & a, const Matriz & b);
 
     friend vector<double> operator * (const Matriz & a, const vector<double> & b);
 
@@ -62,7 +63,7 @@ public:
 
     friend void prlong(const Matriz & matrix, ostream & os);
 		
-    Matriz transpose();
+    Matriz& transpose();
 
     vector<double> transmultiply(const vector<double> & x) const;
 

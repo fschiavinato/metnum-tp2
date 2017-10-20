@@ -1,1 +1,3 @@
 autovalores.o: autovalores.cpp macros.h Matriz.h autovalores.h
+pca.o: pca.cpp Matriz.h autovalores.h macros.h
+Matriz.o: Matriz.cpp Matriz.h

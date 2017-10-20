@@ -4,6 +4,8 @@
 #include "macros.h"
 #include <cmath>
 #include "autovalores.h"
+#include "Matriz.h"
+#define NITER 100
 using namespace std;
 
 void MetodoPotencia(Matriz& B, Matriz& x0, int niter, Matriz& v, double& lambda);

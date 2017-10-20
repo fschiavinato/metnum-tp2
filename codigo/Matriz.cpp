@@ -11,7 +11,7 @@ Matriz::Matriz(Matriz& copia) : vals(copia.vals), cols(copia.cols), filas_ptr(co
     
 }
 
-Matriz::Matriz(long filas, long columnas)
+Matriz::Matriz(long int filas, long int columnas)
 {
     this->construct(filas, columnas);
 }
@@ -134,7 +134,7 @@ vector<double> Matriz::multiply(const vector<double> & x) const
 }
 
 
-Matriz Matriz::multiply(const Matriz & b) const
+Matriz& Matriz::multiply(const Matriz & b) const
 {
     if (this->columnas != b.filas) {
         throw "No matchea la dimension";
@@ -184,7 +184,7 @@ void Matriz::escalar(double k)
 }
 
 
-Matriz Matriz::add(const Matriz & mat) const
+Matriz& Matriz::add(const Matriz & mat) const
 {
     if (this->filas != mat.filas|| this->columnas != mat.columnas) {
         throw "No matchea dimension";
@@ -201,7 +201,7 @@ Matriz Matriz::add(const Matriz & mat) const
     return result;
 }
 
-Matriz Matriz::sub(const Matriz & mat) const
+Matriz& Matriz::sub(const Matriz & mat) const
 {
     if (this->filas != mat.filas || this->columnas != mat.columnas) {
         throw "No matchea dimension";
@@ -289,7 +289,7 @@ ostream & operator << (ostream & os, const Matriz & matrix)
     return os;
 }
 
-Matriz operator * (const Matriz & a, const Matriz & b) {
+Matriz& operator * (const Matriz & a, const Matriz & b) {
     
     return a.multiply(b);
 }
@@ -299,19 +299,19 @@ vector<double> operator * (const Matriz & a, const vector<double> & b) {
     return a.multiply(b);
 }
 
-Matriz operator + (const Matriz & a, const Matriz & b){
+Matriz& operator + (const Matriz & a, const Matriz & b){
   
   return a.add(b);
 
 }
 
-Matriz operator - (const Matriz & a, const Matriz & b){
+Matriz& operator - (const Matriz & a, const Matriz & b){
 
     return a.sub(b);
 }
 
 
-Matriz Matriz::transpose()
+Matriz& Matriz::transpose()
 {
 	long m = this->filas;
 	long n = this->columnas;

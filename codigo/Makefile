@@ -1,11 +1,11 @@
 CC=gcc
 CXX=g++ -std=c++11
 RM=rm -f
-CPPFLAGS=-g 
+CPPFLAGS=-g
 LDFLAGS=-g 
 LDLIBS=-g
 
-SRCS=autovalores.cpp
+SRCS=autovalores.cpp pca.cpp Matriz.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 tp2=tp2.cpp knn.cpp
 knn=knn.cpp
@@ -21,6 +21,12 @@ knn: knn.o
  
 knn.o: knn.cpp
 	g++ --std=c++11 -c "knn.cpp"
+
+test: $(OBJS) test.o
+	$(CXX) -o test $^
+
+test.o:
+	$(CXX) -o test.o -c test.cpp
 
 depend: .depend
 
