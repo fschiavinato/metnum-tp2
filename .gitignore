@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+
+#Editors
+*.swp
+*.swo
+*.vscode
+
+#Latex
+*.pdf
+*.aux
+*.log
+*.toc
+*.synctex.gz
+
+
