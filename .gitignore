@@ -36,11 +36,3 @@
 *.swo
 *.vscode
 
-#Latex
-*.pdf
-*.aux
-*.log
-*.toc
-*.synctex.gz
-
-
