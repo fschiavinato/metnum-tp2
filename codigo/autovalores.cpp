@@ -23,11 +23,7 @@ double bilineal(const Matriz& x, const Matriz& A, const Matriz& y) {
 }
 
 double pi(const Matriz& x, const Matriz& y) {
-    double res = 0;
-    for(int i = 0; i < x.Filas(); i++) {
-        res += x.Get(i, 0) * y.Get(i, 0);
-    }
-    return res;
+    return (x.transpose() * y).Get(1,1);
 }
 
 double norma(const Matriz& x) {

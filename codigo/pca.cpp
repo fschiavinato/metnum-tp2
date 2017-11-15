@@ -1,13 +1,14 @@
 #include "Matriz.h"
 #include <vector>
+#include "pca.h"
 #include "autovalores.h"
 #include "macros.h"
-#define ALPHA 2
 using namespace std;
 
 void reducir(Matriz& A, int alpha, Matriz& tc);
 
-void pca(vector<Matriz> imgs) {
+void pca(const vector<Matriz>& imgs, Matriz& tc) {
+    int alpha = tc.Filas();
     const int m = imgs[0].Filas();
     const int n = imgs.size();
     Matriz X(n, m);
@@ -16,14 +17,12 @@ void pca(vector<Matriz> imgs) {
         mu.add(imgs[i]);
     }
 
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < m; j++) {
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= m; j++) {
             X.Set((imgs[i].Get(j, 1) - mu.Get(j, 1)) / sqrt(n - 1), i, j);
         }
     }
-    Matriz tc(ALPHA, m);
-    reducir(X, ALPHA,  tc);
-
+    reducir(X, alpha,  tc);
 }
 
 void reducir(Matriz& A, int alpha, Matriz& tc) {

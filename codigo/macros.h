@@ -16,8 +16,8 @@
     cout << endl;\
 
 #define DEBUGMATRIZ(a)  cout << #a << " = " << endl;\
-    for(int i = 0; i < a.Filas(); i++) { \
-        for(int j = 0; j < a.Columnas(); j++) {\
+    for(int i = 1; i <= a.Filas(); i++) { \
+        for(int j = 1; j <= a.Columnas(); j++) {\
             cout << a.Get(i, j) << " ";\
         }\
         cout << endl; \

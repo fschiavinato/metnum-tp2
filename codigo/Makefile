@@ -5,7 +5,7 @@ CPPFLAGS=-g
 LDFLAGS=-g 
 LDLIBS=-g
 
-SRCS=autovalores.cpp pca.cpp Matriz.cpp
+SRCS=autovalores.cpp pca.cpp Matriz.cpp test.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 tp2=tp2.cpp knn.cpp
 knn=knn.cpp
@@ -16,17 +16,14 @@ all: $(OBJS)
 tp2:
 	$(CXX) $(LDFLAGS) -o tp2 $(tp2) $(LDLIBS)
 
-knn: knn.o	
+knn: knn.o 
 	g++ --std=c++11 -o knn knn.o 
  
 knn.o: knn.cpp
 	g++ --std=c++11 -c "knn.cpp"
 
 test: $(OBJS) test.o
-	$(CXX) -o test $^
-
-test.o:
-	$(CXX) -o test.o -c test.cpp
+	$(CXX) $(CPPFLAGS) -o test $^
 
 depend: .depend
 

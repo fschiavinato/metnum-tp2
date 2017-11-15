@@ -23,7 +23,7 @@ public:
 
     Matriz(long int filas, long int columnas);
 
-    Matriz(Matriz& copia);
+    Matriz(const Matriz& copia);
 
     ~Matriz();
 
@@ -63,7 +63,7 @@ public:
 
     friend void prlong(const Matriz & matrix, ostream & os);
 		
-    Matriz& transpose();
+    Matriz& transpose() const;
 
     vector<double> transmultiply(const vector<double> & x) const;
 

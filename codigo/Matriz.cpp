@@ -7,8 +7,9 @@ Matriz::Matriz()
     columnas = 0;
 }
 
-Matriz::Matriz(Matriz& copia) : vals(copia.vals), cols(copia.cols), filas_ptr(copia.filas_ptr) {
-    
+Matriz::Matriz(const Matriz& copia) : vals(copia.vals), cols(copia.cols), filas_ptr(copia.filas_ptr) {
+    this->filas = copia.filas;
+    this->columnas = copia.columnas;
 }
 
 Matriz::Matriz(long int filas, long int columnas)
@@ -140,7 +141,7 @@ Matriz& Matriz::multiply(const Matriz & b) const
         throw "No matchea la dimension";
     }
 
-    Matriz result(this->filas, b.columnas);
+    Matriz& result = *(new Matriz(this->filas, b.columnas));
 
     double a;
 
@@ -190,7 +191,7 @@ Matriz& Matriz::add(const Matriz & mat) const
         throw "No matchea dimension";
     }
 
-    Matriz result(this->filas, this->columnas);
+    Matriz& result = *(new Matriz (this->filas, this->columnas));
 
     for (int i = 1; i <= this->filas; i++) {
         for (int j = 1; j <= this->columnas; j++) {
@@ -207,7 +208,7 @@ Matriz& Matriz::sub(const Matriz & mat) const
         throw "No matchea dimension";
     }
 
-    Matriz result(this->filas, this->columnas);
+    Matriz& result = *(new Matriz (this->filas, this->columnas));
 
     for (int i = 1; i <= this->filas; i++) {
         for (int j = 1; j <= this->columnas; j++) {
@@ -311,12 +312,12 @@ Matriz& operator - (const Matriz & a, const Matriz & b){
 }
 
 
-Matriz& Matriz::transpose()
+Matriz& Matriz::transpose() const
 {
 	long m = this->filas;
 	long n = this->columnas;
 
-	Matriz res(n,m);
+	Matriz& res = *(new Matriz(n,m));
 	for(long i = 1; i <= m; i++)
 		for(long j = 1; j <= n; j++)
 			res.Set(this->Get(i,j),j,i);
