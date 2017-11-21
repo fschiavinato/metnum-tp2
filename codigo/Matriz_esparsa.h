@@ -25,6 +25,8 @@ public:
 
     Matriz(const Matriz& copia);
 
+    ~Matriz();
+
     long Filas() const;
 
     long Columnas() const;
@@ -37,11 +39,13 @@ public:
 
     vector<double> multiply(const vector<double> & x) const;
 
+    Matriz& multiply(const Matriz & m) const;
+
     void escalar(double k);
 
-    void add(const Matriz & m);
+    Matriz& add(const Matriz & m) const;
 
-    void sub(const Matriz & m);
+    Matriz& sub(const Matriz & m) const;
 
     friend bool operator == (const Matriz & a, const Matriz & b);
 
@@ -61,12 +65,25 @@ public:
 		
     Matriz& transpose() const;
 
+    vector<double> transmultiply(const vector<double> & x) const;
+
     vector<double> valores();
 
 
 private:
     
-    vector<vector<double>>  vals;
+    vector<double>  vals;
+    vector<long>  cols;
+    vector<long>  filas_ptr;
+
+    long filas;
+    long columnas;
+
+    void construct(long fila, long columna);
+    void validarCoordenadas(long fila, long col) const;
+    void insert(long index, long fila, long col, double val);
+    void remove(long index, long fila);
+
 
 };
 
