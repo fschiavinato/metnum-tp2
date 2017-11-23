@@ -31,7 +31,7 @@ long Matriz::Columnas() const
 
 Matriz & Matriz::Set(double val, long fila, long col)
 {
-    this->vals[fila-1][col-1] = val;
+    this->vals[fila][col] = val;
     return *this;
 }
 
@@ -39,7 +39,7 @@ Matriz & Matriz::Set(double val, long fila, long col)
 
 double Matriz::Get(long fila, long col) const
 {
-    return this->vals[fila-1][col-1];
+    return this->vals[fila][col];
 }
 
 void imprimirvector80(std::vector<double> v) {
@@ -68,8 +68,8 @@ void Matriz::add(const Matriz & mat)
         throw "No matchea dimension";
     }
 
-    for (int i = 1; i <= this->Filas(); i++) {
-        for (int j = 1; j <= this->Columnas(); j++) {
+    for (int i = 0; i < this->Filas(); i++) {
+        for (int j = 0; j < this->Columnas(); j++) {
             this->Set(this->Get(i, j) + mat.Get(i, j), i, j);
         }
     }
@@ -81,8 +81,8 @@ void Matriz::sub(const Matriz & mat)
         throw "No matchea dimension";
     }
 
-    for (int i = 1; i <= this->Filas(); i++) {
-        for (int j = 1; j <= this->Columnas(); j++) {
+    for (int i = 0; i < this->Filas(); i++) {
+        for (int j = 0; j < this->Columnas(); j++) {
             this->Set(this->Get(i, j) - mat.Get(i, j), i, j);
         }
     }
@@ -105,9 +105,9 @@ bool operator != (const Matriz & a, const Matriz & b)
 
 ostream & operator << (ostream & os, const Matriz & matrix)
 {
-    for (int i = 1; i <= matrix.Filas(); i++) {
-        for (int j = 1; j <= matrix.Columnas(); j++) {
-            if (j != 1) {
+    for (int i = 0; i < matrix.Filas(); i++) {
+        for (int j = 0; j < matrix.Columnas(); j++) {
+            if (j != 0) {
                 os << " ";
             }
 
@@ -131,11 +131,11 @@ Matriz& operator * (const Matriz & a, const Matriz & b) {
 
     double resFilaXCol;
 
-    for (long i = 1; i <= a.Filas(); i++) {
-        for (long j = 1; j <= b.Columnas(); j++) {
+    for (long i = 0; i < a.Filas(); i++) {
+        for (long j = 0; j < b.Columnas(); j++) {
             resFilaXCol = 0;
 
-            for (long k = 1; k <= a.Columnas(); k++) {
+            for (long k = 0; k < a.Columnas(); k++) {
                 resFilaXCol += a.Get(i, k) * b.Get(k, j);
             }
 
@@ -167,8 +167,8 @@ Matriz& Matriz::transpose() const
 	long n = this->Columnas();
 
 	Matriz& res = *(new Matriz(n,m));
-	for(long i = 1; i <= m; i++)
-		for(long j = 1; j <= n; j++)
+	for(long i = 0; i < m; i++)
+		for(long j = 0; j < n; j++)
 			res.Set(this->Get(i,j),j,i);
 	return res;
 }

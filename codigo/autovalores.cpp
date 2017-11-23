@@ -23,7 +23,7 @@ double bilineal(const Matriz& x, const Matriz& A, const Matriz& y) {
 }
 
 double pi(const Matriz& x, const Matriz& y) {
-    return (x.transpose() * y).Get(1,1);
+    return (x.transpose() * y).Get(0,0);
 }
 
 double norma(const Matriz& x) {

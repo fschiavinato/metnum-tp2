@@ -17,9 +17,9 @@ void pca(const vector<Matriz>& imgs, Matriz& tc) {
         mu.add(imgs[i]);
     }
 
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= m; j++) {
-            X.Set((imgs[i].Get(j, 1) - mu.Get(j, 1)) / sqrt(n - 1), i, j);
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            X.Set((imgs[i].Get(j, 0) - mu.Get(j, 0)) / sqrt(n - 1), i, j);
         }
     }
     reducir(X, alpha,  tc);
